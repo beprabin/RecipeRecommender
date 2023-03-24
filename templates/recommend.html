@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recipe | Recommender</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<style>
+    .text_white{
+        color: white;
+    }
+</style>
+<body style="background-color: rgb(98, 59, 135);">
+
+    <nav class="navbar" style="background-color: rgb(65, 141, 67);">
+        <h2 class="navbar-brand">My Food Recommender</h2>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-white">Recommend Foods</h1>
+                <form action="/recommend_foods" method="post">
+                    <input type="text" name="user_input" class="form-control"><br>
+                    <input type="Submit">
+                </form> 
+            </div>
+        
+            <div class="col-md-3" style="margin-top:30">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="../static/foodimage/-chickpea-pancakes-with-leeks-squash-and-yogurt-51260630.jpg" alt="no link">
+                        <h3 >rrn</h3>
+                        <h2 >e</h2>
+                        <h2 >e</h2>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
