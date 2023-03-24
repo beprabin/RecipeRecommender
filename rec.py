@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import sigmoid_kernel
+import pickle
 
 foods = pd.read_csv('FoodIngredients.csv', nrows=200)
 # foods.head(1)['Ingredients']
@@ -67,6 +68,8 @@ def giv_rec(title, sig=sig):
         recom.at[count, 'ingredients'] = foods['Ingredients'].iloc[i]
         recom.at[count, 'instructions'] = foods['Instructions'].iloc[i]
         count += 1
+
+    pickle.dump(sig_scores, open('sig_scores.pkl', 'wb'))
     return recom
     # data = []
     # item = []
@@ -80,4 +83,5 @@ def giv_rec(title, sig=sig):
     # return data
 
 
+pickle.dump(foods, open('list.pkl', 'wb'))
 print(giv_rec('Thanksgiving Mac and Cheese'))
