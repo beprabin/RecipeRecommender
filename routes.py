@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     flash,
@@ -7,8 +6,7 @@ from flask import (
     session
 )
 import pickle
-import pandas as pd
-from likes import *
+from extra.likes import *
 from flask import request
 import sqlite3
 from datetime import timedelta
@@ -21,19 +19,16 @@ from sqlalchemy.exc import (
 )
 from werkzeug.routing import BuildError
 
-from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
+from flask_bcrypt import check_password_hash
 from flask_login import (
-    UserMixin,
     login_user,
-    LoginManager,
-    current_user,
     logout_user,
     login_required,
 )
 
 from app import create_app, db, login_manager, bcrypt
-from models import User, Favourite
-from forms import login_form, register_form
+from extra.models import User, Favourite
+from extra.forms import login_form, register_form
 
 foodlist = pickle.load(open('list.pkl', 'rb'))
 
@@ -61,6 +56,15 @@ def index():
                            instruction=foodlist['Instructions'].values,
                            )
 
+@app.route('/recs')
+def rec():
+    if request.method == "GET":
+        df = pd.read_csv('FoodIngredients.csv', nrows=200)
+        l = []
+        count = 0
+        for i in range(len(df)):
+            l = l.append(df['Title'].iloc(count))
+            count += 1
 
 @app.route('/recommend')
 def recommend_ui():
