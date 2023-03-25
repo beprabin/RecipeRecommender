@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import pickle
 from flask import (
     render_template,
@@ -77,14 +77,31 @@ def recommend():
 
     food_indices = [i[0] for i in sig_scores]
     
-    data = []
-    item = []
-    item.append(foodlist['Title'].iloc[food_indices])
-    item.append(foodlist['Image_Name'].iloc[food_indices])
-    item.append(foodlist['Ingredients'].iloc[food_indices])
-    item.append(foodlist['Instructions'].iloc[food_indices])
+    # data = []
+    # item = []
+    # item.append(foodlist['Title'].iloc[food_indices])
+    # item.append(foodlist['Image_Name'].iloc[food_indices])
+    # item.append(foodlist['Ingredients'].iloc[food_indices])
+    # item.append(foodlist['Instructions'].iloc[food_indices])
 
-    data.append(item)
+    # data.append(item)
+    recom = pd.DataFrame(columns=['id','title', 'image', 'ingredients', 'instructions'])
+    count = 0
+    for i in food_indices:
+        recom.at[count, 'id'] = i
+        recom.at[count, 'Title'] = foodlist['Title'].iloc[i]
+        recom.at[count, 'Image_Name'] = foodlist['Image_Name'].iloc[i]
+        recom.at[count, 'Ingredients'] = foodlist['Ingredients'].iloc[i]
+        recom.at[count, 'Instructions'] = foodlist['Instructions'].iloc[i]
+        count += 1
+    print(recom['id'])
+
+    return render_template('recommend.html', 
+                        id = recom['id'].values,
+                        food_name = recom['Title'].values,
+                        image = recom['Image_Name'].values,
+                        ingredient = recom['Ingredients'].values,
+                        instruction = recom['Instructions'].values)
 
 @app.route('/selected-item/<id>')
 def selected_item(id):
