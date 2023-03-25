@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS favourites;
+CREATE TABLE users (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    password TEXT NOT NULL,
+    email VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE favourites (
+    fav_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    user_id INTEGER NOT NULL
+);

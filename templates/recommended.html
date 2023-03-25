@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommend</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/css/recommended.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <div id="navbar">
+        <img src="mainlogo.png">
+        <div class="nav-head">
+            <a href="../templates/home.html">Recipe Recommendation System</a>
+        </div>
+        <div class="nav-login">
+            <a href="login.html"><i class="fa fa-fw fa-user"></i></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="../templates/home.html"><i class="fa fa-fw fa-home"></i></a>
+            <a href="../templates/home.html"><i class="fa fa-fw fa-heart"></i></a>
+            <a href="../templates/liked.html"><i class="fa fa-fw fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="recipe">
+            <div class="recipe-searchbar">
+                <div class="box">
+                    <input type=" text" placeholder="Search" id="tags">
+                    <i class="fa fa-fw fa-search"></i>
+                </div>
+            </div>
+            <div class="recipe-list">
+                <div class="recipe-list-boundary">
+                    <div class="recipe-item1">
+                        <a href="">Recipe 1</a>
+                    </div>
+                    <div class="recipe-item2">
+                        <a href="">Recipe 1</a>
+                    </div>
+                    <div class="recipe-item3">
+                        <a href="">Recipe 1</a>
+                    </div>
+                    <div class="recipe-item4">
+                        <a href="">Recipe 1</a>
+                    </div>
+                    <div class="recipe-item5">
+                        <a href="">Recipe 1</a>
+                    </div>
+                    <div class="recipe-item6">
+                        <a href="">Recipe 1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-info">
+            Lakeside,Pokhara,Nepal<br/>
+            <a href="mailto:info@xyzhotel.com">info@xyzhotel.com</a><br/>
+            +977 1 4481385, +977 1 4456851, +977 1 4568710<br/>
+            Copyright © 2022 The XYZ Hotel. All Right Reserved.<br/>
+            Website by Team-B
+        </div>
+    </footer>
+ <script>
+  $( function() {
+    var availableTags = [
+        {% for language in languages %}
+            "{{language}}",
+        {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+</body>
+<script>
+    //Sticky Navigation Bar
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        }
+        else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+</script>
+
+</html>

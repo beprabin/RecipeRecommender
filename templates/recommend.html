@@ -30,10 +30,9 @@
                 <form action="/recommend_foods" method="post">
                     <input type="text" name="user_input" class="form-control"><br>
                     <input type="Submit">
-                </form> 
+                </form>
             </div>
         
-            {% for i in range(food_name|length) %}
             <div class="col-md-3" style="margin-top:30">
                 <a href="/selected-item/{{ id[i] }}">
                 <div class="card">
@@ -48,7 +47,7 @@
             {% endfor %}
         </div>
     </div>
-    
+
 
 </body>
 </html>

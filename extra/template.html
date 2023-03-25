@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parent</title>
+</head>
+<style>
+    .text_white{
+        color: white;
+    }
+    .navbar-brand{
+        margin: 20px;
+    }
+    .nav navbar-nav{
+        margin: 20px;
+        float: inline-end;
+    }
+</style>
+<body style="background-color: rgb(98, 59, 135);">
+  <header>
+        <nav class="navbar" style="background-color: rgb(65, 141, 67);">
+        <h2 class="navbar-brand">My Food Recommender</h2>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+      <nav id="navbar">
+        <img src="mainlogo.png">
+        <div class="nav-head">
+            <a href="../templates/home.html">Recipe Recommendation System</a>
+        </div>
+        <div class="nav-login">
+            <a href="login.html"><i class="fa fa-fw fa-user"></i></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="../templates/home.html"><i class="fa fa-fw fa-home"></i></a>
+            <a href="../templates/home.html"><i class="fa fa-fw fa-heart"></i></a>
+            <a href="../templates/liked.html"><i class="fa fa-fw fa-envelope"></i></a>
+        </div>
+    </nav>
+    </header>
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

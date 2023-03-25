@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="..static/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <div id="navbar">
+        <img src="mainlogo.png">
+        <div class="nav-head">
+            <a href="../templates/index.html">Recipe Recommendation System</a>
+        </div>
+        <div class="nav-login">
+            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i>Login/Register</a>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="greeting-content">
+            <div class="welcome">
+                <div class="text">
+                    <h1>
+                        <font color="#8A191D">Namaste</font>
+                    </h1>
+                    <h2>
+                        <font color="#8A191D">We bow to the divinity within you.</font>
+                    </h2>
+                    <p>On the outer edge of the busy tourist hub of Thamel, The Malla Hotel also has a long and storied
+                        past. Its rooms have all been newly renovated to provide modern, up to date comforts, and
+                        whether you're here for business, leisure or an event, this is not just a place to stay, but a
+                        bit of history to savor. Wander in the beautiful garden, take a dip in the pool, try your luck
+                        at the casino, or visit the newly updated Shanti Spa, equipped with five massage rooms and a
+                        renovated steam and sauna room. Extensive yoga and meditation services are also available, for
+                        an unforgettable personalized experience.</p>
+                </div>
+                <div class="row">
+                    <div class="column1">
+                        <img src="images/w1.jpg">
+                        <img src="images/w2.jpg">
+                    </div>
+                    <div class="column2">
+                        <img src="images/w3.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+<script>
+    //Sticky Navigation Bar
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        }
+        else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+</script>
+
+</html>
