@@ -10,7 +10,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
+<style>
+    form{
+    background-color: #F5F5F5;
+    width: 45%;
+    height: 6vh;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 24px;
+    margin: auto;
+    margin-top: 30px;
+}
+input[type="search"] {
+  border: none;
+  background: transparent;
+  height: 100%;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
 
+  border-radius: inherit;
+  width:100%;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+button[type="submit"] {
+  text-indent: -999px;
+  overflow: hidden;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+button[type="submit"]:hover {
+  opacity: 1;
+}
+button[type="submit"]:focus,
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
+</style>
 <body>
 
     <div id="navbar">
@@ -18,31 +69,35 @@
         <div class="nav-head">
             <a href="../templates/home.html">myrecipe</a>
         </div>
-        <div class="nav-login">
-            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>
-        </div>
+<!--        <div class="nav-login">-->
+<!--            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>-->
+<!--        </div>-->
         <div class="navbar-menu">
-            <a href="/home"><i class="fa fa-fw fa-home"></i></a>
-            <a href="/recommend"><i class="fa fa-fw fa-heart"></i></a>
-            <a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a>
+            <div class="nv"><a href="/home"><i class="fa fa-fw fa-home"></i></a></div>
+
+            <div class="nv"><a href="/recommend"><i class="fa fa-fw fa-heart"></i></a></div>
+            <div class="nv"><a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a></div>
         </div>
     </div>
 
     <div class="content">
     <div class="recipe">
-        <div class="recipe-searchbar">
-            <div class="box">
-                <input type=" text" placeholder="Search">
-                <i class="fa fa-fw fa-search"></i>
-            </div>
-        </div>
+<!--        <div class="recipe-searchbar">-->
+<!--            <div class="box">-->
+
+                <form action="/recommend_foods" method="post">
+                <input type="search" placeholder="Search" name="user_input">
+                <button type="submit"><i class="fa fa-fw fa-search"></i></button>
+                </form>
+<!--            </div>-->
+<!--        </div>-->
         <div class="recipe-list">
             <div class="recipe-list-boundary">
                 <div class="recipe-item">
                     <p style="font-size: 33px;">Recipe You<br /></p>
                     <p style="font-size: 33px;">Will<br /></p>
                     <p style="font-size: 33px;">LOVE<br /></p>
-                    <p style="font-size: 20px;">We strive to provide you with the most similar to your taste.</p>
+                    <p style="font-size: 20px;">We strive to provide you with the recipe most similar to your taste.</p>
                 </div>
             </div>
             <div class="top-recipe">

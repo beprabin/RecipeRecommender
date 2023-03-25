@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Recipe | Recommender</title>
     <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -13,49 +14,147 @@
     .text_white{
         color: white;
     }
+   form{
+    background-color: #F5F5F5;
+    width: 45%;
+    height: 6vh;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 24px;
+    margin: auto;
+    margin-top: 30px;
+}
+input[type="search"] {
+  border: none;
+  background: transparent;
+  height: 100%;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+
+  border-radius: inherit;
+  width:100%;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+button[type="submit"] {
+  text-indent: -999px;
+  overflow: hidden;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+button[type="submit"]:hover {
+  opacity: 1;
+}
+button[type="submit"]:focus,
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
 </style>
 <body style="background-color: rgb(98, 59, 135);">
 
     <div id="navbar">
-        <img src="mainlogo.png">
+        <img src="../static/frontendimages/mainlogo.png">
         <div class="nav-head">
-            <a href="../templates/home.html">Recipe Recommendation System</a>
+            <a href="../templates/home.html">myrecipe</a>
         </div>
-        <div class="nav-login">
-            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>
-        </div>
+<!--        <div class="nav-login">-->
+<!--            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>-->
+<!--        </div>-->
         <div class="navbar-menu">
-            <a href="/home"><i class="fa fa-fw fa-home"></i></a>
-            <a href="/recommend"><i class="fa fa-fw fa-heart"></i></a>
-            <a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a>
+            <div class="nv"><a href="/home"><i class="fa fa-fw fa-home"></i></a></div>
+
+            <div class="nv"><a href="/recommend"><i class="fa fa-fw fa-heart"></i></a></div>
+            <div class="nv"><a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a></div>
         </div>
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-white">Recommend Foods</h1>
+<div class="content">
+    <div class="recipe">
+<!--        <div class="recipe-searchbar">-->
+<!--            <div class="box">-->
                 <form action="/recommend_foods" method="post">
-                    <input type="text" name="user_input" class="form-control"><br>
-                    <input type="Submit">
+                <input type="search" placeholder="Search" name="user_input">
+                <button type="submit"><i class="fa fa-fw fa-search"></i></button>
                 </form>
+<!--            </div>-->
+<!--        </div>-->
+<!--    <div class="container">-->
+        <div class="recipe-list">
+<!--            <div class="col-12">-->
+<!--                <h1 class="text-white">Recommend Foods</h1>-->
+<!--                <form action="/recommend_foods" method="post">-->
+<!--                    <input type="text" name="user_input" class="form-control"><br>-->
+<!--                    <input type="Submit">-->
+<!--                </form>-->
+<!--            </div>-->
+            <div class="recipe-list-boundary" style="height: 100px;">
+                <div class="recipe-item">
+                    <p style="font-size: 33px;">Recommendation</p>
+                </div>
             </div>
-            
+            <div class="top-recipe">
             {% for i in range(food_name|length) %}
-            <div class="col-md-3" style="margin-top:30">
+<!--            <div class="col-md-3" style="margin-top:30">-->
                 <a href="/selected-item/{{ id[i] }}">
-                <div class="card">
-                    <div class="card-body">
+                <div class="top-recipe-contents">
+                    <div class="top-recipe-c1">
                         <img class="card-img-top" src="../static/foodimage/{{ image[i] }}.jpg" alt="no link">
-                        <h3 >{{ food_name[i] }}</h3><br>
+                        <p style="margin-top:15px">{{ food_name[i] }}</p>
+
                     </div>
                 </div>
                 </a>
-            </div>
+<!--            </div>-->
             {% endfor %}
         </div>
     </div>
-
-
+<!--    </div>-->
+</div>
+</div>
+<footer class="footer">
+        <div class="footer-info">
+            Lakeside,Pokhara,Nepal<br />
+            <a href="mailto:info@xyzhotel.com">info@xyzhotel.com</a><br />
+            +977 1 4481385, +977 1 4456851, +977 1 4568710<br />
+            Copyright © 2022 The XYZ Hotel. All Right Reserved.<br />
+            Website by Team-B
+        </div>
+    </footer>
 </body>
+<script>
+    //Sticky Navigation Bar
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        }
+        else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+</script>
 </html>
