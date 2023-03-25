@@ -32,17 +32,19 @@
                     <input type="Submit">
                 </form>
             </div>
-
+            
+            {% for i in range(food_name|length) %}
             <div class="col-md-3" style="margin-top:30">
+                <a href="/selected-item/{{ id[i] }}">
                 <div class="card">
                     <div class="card-body">
-                        <img class="card-img-top" src="../static/foodimage/-chickpea-pancakes-with-leeks-squash-and-yogurt-51260630.jpg" alt="no link">
-                        <h3 >rrn</h3>
-                        <h2 >e</h2>
-                        <h2 >e</h2>
-                        </div>
+                        <img class="card-img-top" src="../static/foodimage/{{ image[i] }}.jpg" alt="no link">
+                        <h3 >{{ food_name[i] }}</h3><br>
+                    </div>
                 </div>
+                </a>
             </div>
+            {% endfor %}
         </div>
     </div>
 
