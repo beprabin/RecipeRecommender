@@ -1,0 +1,151 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  margin-top: 0px;
+  background-image: url(../static/frontendimages/wallpaper5.jpg);
+}
+
+
+/* Navigation Bar*/
+
+/* Style the navbar */
+  #navbar {
+    overflow: hidden;
+    background-color: white;
+    padding: 0px;
+    height: 80px;
+  }
+
+  /* Navbar links */
+
+  #navbar a{
+    font-family: 'Merriweather', serif;
+    font-size: 35px;
+    color: #8A191D;
+    text-decoration: none;
+  }
+
+  #navbar .nav-head {
+    float: left;
+    width: 480px;
+    padding: 15px;
+  }
+
+  #navbar .nav-login a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+
+    background-color: #f4c024;
+    border-radius: 25px 25px 25px 25px;
+  }
+
+  .nav-login{
+    float: right;
+    margin-right: 20px;
+    padding-top: 15px;
+  }
+
+  #navbar .nav-login a:hover {
+    background-color: #e1b123;
+    color: white;
+  }
+
+  #navbar img{
+    width: 40px;
+    height: 45px;
+    float: left;
+    margin-left: 30px;
+    margin-right: 50px;
+    padding-top: 15px;
+  }
+
+  /* Page content */
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    margin-top: 0px;
+    width: 100%;
+  }
+
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 0px;
+  }
+
+
+
+/*greeting content*/
+
+  /* .greeting-content{
+    background: #F5F5F5;
+  } */
+
+  .welcome{
+    width: 65%;
+    margin: 100px auto;
+    display: flex;
+  }
+
+  .text h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 44px;
+  }
+
+  .text h2{
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 25px;
+  }
+
+  .text p{
+    font-family: 'Martel Sans', sans-serif;
+    line-height: 2;
+  }
+
+  .text{
+    font-family: century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: justify;
+    width: 45%;
+  }
+
+  .row{
+    width: 20%;
+    display: flex;
+    padding-left: 50px;
+  }
+
+  .column1, .column2 {
+    padding: 1px;
+  }
+
+  .column1 img {
+    padding: 2px;
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  .column2 img {
+    padding: 2px;
+    width: 250px;
+    height: 409px;
+    border-radius: 10px;
+  }
+
+

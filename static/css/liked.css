@@ -1,0 +1,207 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    margin-top: 0px;
+}
+
+
+/* Navigation Bar*/
+
+/* Style the navbar */
+#navbar {
+    overflow: hidden;
+    background-color: #F5F5F5;
+    padding: 0px;
+    height: 8.5vh;
+    /* display: flex; */
+}
+
+/* Navbar links */
+
+#navbar a {
+    font-family: 'Merriweather', serif;
+    font-size: 35px;
+    color: #8A191D;
+    text-decoration: none;
+}
+
+#navbar .nav-head {
+    float: left;
+    width: 480px;
+    padding: 15px;
+}
+
+#navbar .nav-login a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+
+    background-color: #f4c024;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.nav-login {
+    float: right;
+    margin-right: 20px;
+    padding-top: 15px;
+}
+
+#navbar .nav-login a:hover,
+#navbar .navbar-menu a:hover {
+    background-color: #e1b123;
+    color: white;
+}
+
+#navbar img {
+    width: 40px;
+    height: 45px;
+    float: left;
+    margin-left: 30px;
+    margin-right: 50px;
+    padding-top: 15px;
+}
+
+.navbar-menu {
+    margin-right: 100px;
+    float: right;
+    /* background-color: blue; */
+    width: 250px;
+    height: 8.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#navbar .navbar-menu a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 14px;
+    color: white;
+
+    background-color: #f4c024;
+    border-radius: 25px 25px 25px 25px;
+}
+
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    margin-top: 0px;
+    width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky+.content {
+    padding-top: 0px;
+}
+
+/* Page content */
+.content {
+    margin-top: 8.5vh;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    /* min-height: 91.5vh; */
+    /* background-color: aqua; */
+    justify-content: space-evenly;
+}
+
+
+/* Recipe Content */
+.content .recipe {
+    /* height: 91.5vh; */
+    width: 80%;
+    background-color: #e1b123;
+
+    background-size: cover;
+    background: url(images/recipe-list\ background2.jpg);
+}
+
+.recipe-searchbar {
+    /* background-color: blue; */
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe .box {
+    background-color: #F5F5F5;
+    width: 45%;
+    height: 4vh;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 24px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.recipe input {
+    width: 1500px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+}
+
+.recipe .fa-search {
+    color: #e1b123;
+    cursor: pointer;
+}
+
+.recipe-list {
+    /* background-size: cover;
+    background: url(images/recipe-list\ background2.jpg); */
+    border-radius: 20px 20px 0 0;
+    height: 85vh;
+}
+
+.recipe-list-boundary {
+    display: flow-root;
+    margin: 50px;
+    background-color: blue;
+    height: 500px;
+    justify-content: space-evenly;
+    /* height: fit-content; */
+}
+
+.recipe-item {
+    margin: 20px;
+    padding: 10px;
+    background-color: #eee;
+    width: 170px;
+    height: 200px;
+}
+
+.footer {
+    padding: 20px;
+    /* Some padding */
+    text-align: center;
+    /* Center text*/
+    background: #8A191D;
+    /* Grey background */
+    height: 200px;
+    /*optional*/
+}
+
+.footer-info {
+    font-family: century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: block;
+    color: white;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.footer-info a {
+    font-family: century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    text-decoration: none;
+}
