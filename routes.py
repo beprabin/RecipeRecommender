@@ -9,6 +9,7 @@ from flask import (
 import pickle
 import pandas as pd
 from likes import *
+from flask import request
 import sqlite3
 from datetime import timedelta
 from sqlalchemy.exc import (
@@ -21,7 +22,6 @@ from sqlalchemy.exc import (
 from werkzeug.routing import BuildError
 
 from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
-
 from flask_login import (
     UserMixin,
     login_user,
@@ -33,6 +33,7 @@ from flask_login import (
 
 from app import create_app, db, login_manager, bcrypt
 from models import User, Favourite
+from forms import login_form, register_form
 
 foodlist = pickle.load(open('list.pkl', 'rb'))
 
@@ -66,6 +67,22 @@ def recommend_ui():
     return render_template('recommend.html')
 
 
+# @app.route("/login/", methods=("GET", "POST"), strict_slashes=False)
+# def login():
+#     form = login_form(request.form)
+#
+#     if form.validate_on_submit():
+#         try:
+#             user = User.query.filter_by(email=form.email.data).first()
+#             if check_password_hash(user.pwd, form.pwd.data):
+#                 login_user(user)
+#                 return redirect(url_for('index'))
+#             else:
+#                 flash('Invalid Username or Password!', "danger")
+#         except Exception as e:
+#             flash(e, "danger")
+#
+#     return render_template("login.html")
 @app.route("/login/", methods=("GET", "POST"), strict_slashes=False)
 def login():
     form = login_form()
@@ -77,12 +94,40 @@ def login():
                 login_user(user)
                 return redirect(url_for('index'))
             else:
-                flash('Invalid Username or Password!', "danger")
+                flash("Invalid Username or password!", "danger")
         except Exception as e:
             flash(e, "danger")
 
-    return render_template("login.html")
+    return render_template("auth.html",
+                           form=form,
+                           text="Login",
+                           title="Login",
+                           btn_action="Login"
+                           )
 
+
+# @app.route("/register/", methods=("GET", "POST"), strict_slashes=False)
+# def register():
+#     form = RegisterForm()
+#     print(form.email.data)
+#     if form.validate_on_submit():
+#         email = form.email.data
+#         pwd = form.pwd.data
+#         username = form.username.data
+#
+#         newuser = User(
+#             username=username,
+#             email=email,
+#             pwd=bcrypt.generate_password_hash(pwd),
+#         )
+#
+#         db.session.add(newuser)
+#         db.session.commit()
+#         flash(f"Account Successfully Created", "success")
+#         return redirect(url_for("login"))
+#
+#     return render_template("auth.html", form=form)
+#
 
 @app.route("/register/", methods=("GET", "POST"), strict_slashes=False)
 def register():
@@ -101,8 +146,9 @@ def register():
 
             db.session.add(newuser)
             db.session.commit()
-            flash(f"Account Successfully Created", "success")
+            flash(f"Account Successfully created", "success")
             return redirect(url_for("login"))
+
         except InvalidRequestError:
             db.session.rollback()
             flash(f"Something went wrong!", "danger")
@@ -121,7 +167,12 @@ def register():
         except BuildError:
             db.session.rollback()
             flash(f"An error occurred !", "danger")
-        return render_template("login.html")
+    return render_template("auth.html",
+                           form=form,
+                           text="Create account",
+                           title="Register",
+                           btn_action="Register account"
+                           )
 
 
 @app.route("/logout")
@@ -184,9 +235,9 @@ def get_likes(user_id):
     # query = f'''SELECT * FROM favourite WHERE user_id = {user_id}'''
     # like = conn.execute(query).fetchall()
     # conn.close()
-    #like = Favourite.query.get_or_404(user_id)
+    # like = Favourite.query.get_or_404(user_id)
     like = db.session.query(Favourite).all()
-    #like = [l.recipe for l in like]
+    # like = [l.recipe for l in like]
     # t = []
     # for n in like:
     #     t.append(n['title'])
@@ -204,6 +255,7 @@ def get_db_connection():
 
 
 @app.route('/user/liked/add/')
+@login_required
 def add_fav(recipe_name):
     user_id = request.form['userid']
     recipe = request.form['recipe']
