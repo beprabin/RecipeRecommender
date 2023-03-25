@@ -1,4 +1,12 @@
+from flask import (
+    render_template,
+    redirect,
+    flash,
+    url_for,
+    session
+)
 from flask import Flask
+
 import pickle
 
 # from flask_sqlalchemy import SQLAlchemy
@@ -18,10 +26,10 @@ import pickle
 # bcrypt = Bcrypt()
 
 foodlist = pickle.load(open('list.pkl', 'rb'))
-
+app = Flask(__name__)
 
 # def create_app():
-#     app = Flask(__name__)
+
 #     app.secret_key = 'secret-key'
 #     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 #     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -48,10 +56,17 @@ def index():
 def recommend_ui():
     return render_template('recommend.html')
 
+@app.route('/home')
+def home_ui():
+    return render_template('hero.html',
+                           food_name=foodlist['Title'].values,
+                           image=foodlist['Image_Name'].values,
+                           ingredient=foodlist['Ingredients'].values,
+                           instruction=foodlist['Instructions'].values,)
 
 @app.route('/recipe/<title>')
 def show_recipe(title):
-    return render_template('ingredients.html', title=tile)
+    return render_template('ingredients.html', title=title)
 
 
 # @app.route('/recommend_foods', methods=['post'])
