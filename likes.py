@@ -6,8 +6,10 @@ def get_likes_data(titles):
     df = pd.DataFrame(columns=['title', 'image'])
     count = 0
     for title in titles:
+        print(title)
         for i in range(len(recipes)):
-            if recipes.loc[i, 'Title'] == title:
+            if recipes.loc[i, 'Title'] == title.recipe:
+
                 print(recipes.loc[i, 'Title'])
                 # values.append(recipes.loc[i])
                 df.at[count, 'title'] = recipes['Title'].iloc[i]
@@ -16,4 +18,4 @@ def get_likes_data(titles):
     return df
 
 
-print(get_likes_data(['Thanksgiving Mac and Cheese', 'Apples and Oranges']))
+#print(get_likes_data(['Thanksgiving Mac and Cheese', 'Apples and Oranges']))
