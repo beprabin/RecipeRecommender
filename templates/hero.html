@@ -5,52 +5,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Recipe</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<style>
-    .text_white{
-        color: white;
-    }
-    .navbar-brand{
-        margin: 20px;
-    }
-    .nav navbar-nav{
-        margin: 20px;
-        float: inline-end;
-    }
-</style>
-<body style="background-color: rgb(98, 59, 135);">
 
-    <nav class="navbar" style="background-color: rgb(65, 141, 67);">
-        <h2 class="navbar-brand">My Food Recommender</h2>
-        <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/recommend">Recommend</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-white">Top Foods of website</h1>
-            </div>
-            {% for i in range(food_name|length) %}
-                
-                <div class="col-md-3" style="margin-top:30">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../static/foodimage/{{ image[i] }}.jpg" alt="no link">
-                            <h3 >{{ food_name[i] }}</h3>
-                            <!-- <h3 >{{ food_name[i] }}</h3>
-                            <h3 >{{ food_name[i] }}</h3> -->
-                            </div>
-                    </div>
-                </div>
-            {% endfor %}
+<body>
+
+    <div id="navbar">
+        <img src="../static/frontendimages/mainlogo.png">
+        <div class="nav-head">
+            <a href="../templates/home.html">myrecipe</a>
+        </div>
+        <div class="nav-login">
+            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="/home"><i class="fa fa-fw fa-home"></i></a>
+            <a href="/recommend"><i class="fa fa-fw fa-heart"></i></a>
+            <a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a>
         </div>
     </div>
-    
+
+    <div class="content">
+    <div class="recipe">
+        <div class="recipe-searchbar">
+            <div class="box">
+                <input type=" text" placeholder="Search">
+                <i class="fa fa-fw fa-search"></i>
+            </div>
+        </div>
+        <div class="recipe-list">
+            <div class="recipe-list-boundary">
+                <div class="recipe-item">
+                    <p style="font-size: 33px;">Recipe You<br /></p>
+                    <p style="font-size: 33px;">Will<br /></p>
+                    <p style="font-size: 33px;">LOVE<br /></p>
+                    <p style="font-size: 20px;">We strive to provide you with the most similar to your taste.</p>
+                </div>
+            </div>
+            <div class="top-recipe">
+<!--                <div class="top-recipe-title">-->
+<!--                    <h2>Top Recipes</h2>-->
+<!--                </div>-->
+                {% for i in range(food_name|length) %}
+                <!-- <div class="card m-2" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                </div> -->
+                <div class="top-recipe-contents">
+                    <div class="top-recipe-c1">
+                        <img class="card-img-top" src="../static/foodimage/{{ image[i] }}.jpg" alt="no link">
+                        <p>{{ food_name[i] }}</p>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer class="footer">
+        <div class="footer-info">
+            Lakeside,Pokhara,Nepal<br />
+            <a href="mailto:info@xyzhotel.com">info@xyzhotel.com</a><br />
+            +977 1 4481385, +977 1 4456851, +977 1 4568710<br />
+            Copyright © 2022 The XYZ Hotel. All Right Reserved.<br />
+            Website by Team-B
+        </div>
+    </footer>
 
 </body>
+<script>
+    //Sticky Navigation Bar
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        }
+        else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+</script>
 </html>

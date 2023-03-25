@@ -1,4 +1,6 @@
+
 from flask import Flask, request
+
 import pickle
 from flask import (
     render_template,
@@ -16,8 +18,10 @@ foodlist = pickle.load(open('list.pkl','rb'))
 sig = pickle.load(open('sig.pkl','rb'))
 
 foodlist = pickle.load(open('list.pkl', 'rb'))
+
 sig = pickle.load(open('sig.pkl', 'rb'))
 app = Flask(__name__)
+
 
 
 # def create_app():
@@ -46,6 +50,14 @@ def index():
 @app.route('/recommend')
 def recommend_ui():
     return render_template('recommend.html')
+
+@app.route('/home')
+def home_ui():
+    return render_template('hero.html',
+                           food_name=foodlist['Title'].values,
+                           image=foodlist['Image_Name'].values,
+                           ingredient=foodlist['Ingredients'].values,
+                           instruction=foodlist['Instructions'].values,)
 
 
 @app.route('/recommend_foods', methods=['post'])
@@ -120,5 +132,6 @@ def selected_item(id):
                         ingredient = item['Ingredients'].values,
                         instruction = item['Instructions'].values)
     
+
 if __name__ == '__main__':
     app.run(debug=True)
