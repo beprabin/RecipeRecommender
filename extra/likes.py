@@ -8,7 +8,7 @@ def get_likes_data(titles):
     for title in titles:
         print(title)
         for i in range(len(recipes)):
-            if recipes.loc[i, 'Title'] == title.recipe:
+            if recipes.loc[i, 'Title'] == title:
 
                 print(recipes.loc[i, 'Title'])
                 # values.append(recipes.loc[i])
@@ -18,4 +18,4 @@ def get_likes_data(titles):
     return df
 
 
-#print(get_likes_data(['Thanksgiving Mac and Cheese', 'Apples and Oranges']))
+print(get_likes_data(['Thanksgiving Mac and Cheese', 'Apples and Oranges']))
