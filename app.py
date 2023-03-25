@@ -1,63 +1,59 @@
-from flask import Flask, render_template, request
+from flask import Flask
 import pickle
-import pandas as pd
-import sqlite3
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import sigmoid_kernel
-from likes import *
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_migrate import Migrate
-from flask_login import (
-    UserMixin,
-    login_user,
-    LoginManager,
-    current_user,
-    logout_user,
-    login_required,
-)
 
-login_manager = LoginManager()
-login_manager.session_protection = "strong"
-login_manager.login_view = "login"
-login_manager.login_message_category = "info"
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_bcrypt import Bcrypt
+# from flask_migrate import Migrate
+# from flask_login import (
+#     LoginManager,
+# )
 
-db = SQLAlchemy()
-migrate = Migrate()
-bcrypt = Bcrypt()
+# login_manager = LoginManager()
+# login_manager.session_protection = "strong"
+# login_manager.login_view = "login"
+# login_manager.login_message_category = "info"
+#
+# db = SQLAlchemy()
+# migrate = Migrate()
+# bcrypt = Bcrypt()
 
 foodlist = pickle.load(open('list.pkl', 'rb'))
 
 
-def create_app():
-    app = Flask(__name__)
-    app.secret_key = 'secret-key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
-    login_manager.init_app(app)
-    db.init_app(app)
-    migrate.init_app(app, db)
-    bcrypt.init_app(app)
-
-    return app
-
-
-# @app.route('/')
-# def index():
-#     return render_template('hero.html',
-#                            food_name=foodlist['Title'].values,
-#                            image=foodlist['Image_Name'].values,
-#                            ingredient=foodlist['Ingredients'].values,
-#                            instruction=foodlist['Instructions'].values,
-#                            )
+# def create_app():
+#     app = Flask(__name__)
+#     app.secret_key = 'secret-key'
+#     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
+#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 #
+#     login_manager.init_app(app)
+#     db.init_app(app)
+#     migrate.init_app(app, db)
+#     bcrypt.init_app(app)
 #
-# @app.route('/recommend')
-# def recommend_ui():
-#     return render_template('recommend.html')
-#
-#
+#     return app
+
+
+@app.route('/')
+def index():
+    return render_template('hero.html',
+                           food_name=foodlist['Title'].values,
+                           image=foodlist['Image_Name'].values,
+                           ingredient=foodlist['Ingredients'].values,
+                           instruction=foodlist['Instructions'].values,
+                           )
+
+
+@app.route('/recommend')
+def recommend_ui():
+    return render_template('recommend.html')
+
+
+@app.route('/recipe/<title>')
+def show_recipe(title):
+    return render_template('ingredients.html', title=tile)
+
+
 # @app.route('/recommend_foods', methods=['post'])
 # def recommend():
 #     user_input = request.form.get('user_input')
@@ -98,7 +94,7 @@ def create_app():
 #
 #     return data
 #
-#
+
 # @app.route('/user/liked/<userid>')
 # def favourites(userid):
 #     likes = get_likes(userid)
@@ -122,7 +118,7 @@ def create_app():
 #     conn = sqlite3.connect('database.db')
 #     conn.row_factory = sqlite3.Row
 #     return conn
-#
-#
-# if __name__ == '__main__':
-#     app.run(debug=True)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

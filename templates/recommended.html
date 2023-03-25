@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommend</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/static/css/recommended.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -32,7 +40,7 @@
         <div class="recipe">
             <div class="recipe-searchbar">
                 <div class="box">
-                    <input type=" text" placeholder="Search">
+                    <input type=" text" placeholder="Search" id="tags">
                     <i class="fa fa-fw fa-search"></i>
                 </div>
             </div>
@@ -69,6 +77,18 @@
             Website by Team-B
         </div>
     </footer>
+ <script>
+  $( function() {
+    var availableTags = [
+        {% for language in languages %}
+            "{{language}}",
+        {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
 </body>
 <script>
     //Sticky Navigation Bar

@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def get_likes_data(titles):
-    recipes = pd.read_csv('FoodIngredients.csv', nrows=200)
+    recipes = pd.read_csv('../FoodIngredients.csv', nrows=200)
     df = pd.DataFrame(columns=['title', 'image'])
     count = 0
     for title in titles:
