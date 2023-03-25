@@ -13,10 +13,14 @@ body {
     background-color: #F5F5F5;
     padding: 0px;
     height: 8.5vh;
-    z-index: 1
-    /* display: flex; */
-}
+    z-index: 1;
+    display: flex;
 
+    align-items: center;
+}
+.nv {
+    display: flex;
+}
 /* Navbar links */
 
 #navbar a {
@@ -121,7 +125,7 @@ body {
     background-color: #e1b123;
 
     background-size: cover;
-    background: url(images/recipe-list\ background2.jpg);
+    background: url(images/recipe-list/background2.jpg);
 }
 
 .recipe-searchbar {
