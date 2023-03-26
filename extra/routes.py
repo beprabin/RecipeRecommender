@@ -30,7 +30,7 @@ from app import create_app, db, login_manager, bcrypt
 from extra.models import User, Favourite
 from extra.forms import login_form, register_form
 
-foodlist = pickle.load(open('list.pkl', 'rb'))
+foodlist = pickle.load(open('../list.pkl', 'rb'))
 
 
 @login_manager.user_loader
@@ -59,7 +59,7 @@ def index():
 @app.route('/recs')
 def rec():
     if request.method == "GET":
-        df = pd.read_csv('FoodIngredients.csv', nrows=200)
+        df = pd.read_csv('../FoodIngredients.csv', nrows=200)
         l = []
         count = 0
         for i in range(len(df)):
@@ -253,7 +253,7 @@ def get_likes(user_id):
 
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('../database.db')
     conn.row_factory = sqlite3.Row
     return conn
 
