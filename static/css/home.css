@@ -14,7 +14,7 @@ body {
     padding: 0px;
     height: 8.5vh;
     z-index: 1;
-    display: flex;
+    /*display: flex;*/
 
     align-items: center;
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .navbar-menu {
-    margin-right: 100px;
+    /*margin-right: 100px;*/
     float: right;
     /* background-color: blue; */
     width: 250px;
