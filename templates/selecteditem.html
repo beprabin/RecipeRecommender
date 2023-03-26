@@ -4,11 +4,134 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Receipes</title>
+    <style>
+<!--        .receipe-ingred p {-->
+<!--            margin: 0;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-family: 'Merriweather', serif;-->
+<!--            font-weight: 500;-->
+<!--            line-height: 0.5;-->
+<!--            font-size: 24px;-->
+<!--        }-->
+
+
+
+        .recipes {
+            background-color: red;
+            margin: 10px;
+            padding: 10px;
+            background-color: #eee;
+            width: 100vh;
+            height: 300px;
+            border-radius: 20px;
+        }
+      .float-parent-element {
+            width: 50%;
+      }
+      .float-child-element {
+            float: left;
+            width: 50%;
+      }
+      .red {
+            margin-top: 50px;
+            margin-right: 50%;
+            height: 100px;
+      }
+      .yellow {
+            margin-top:10px;
+            margin-left: 50%;
+            height: 100px;
+            padding-top: 0;
+
+      }
+   </style>
+
+
 </head>
-    {{  food_name[0] }} <br/>
-    {{  image[0] }} <br/>
-    {{  ingredient[0] }} <br/>
-    {{  instruction[0] }} <br/>
+<body>
+    <div id="navbar">
+        <img src="mainlogo.png">
+        <div class="nav-head">
+            <a href="../templates/home.html">myrecipe</a>
+        </div>
+<!--        <div class="nav-login">-->
+<!--            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>-->
+<!--        </div>-->
+        <div class="navbar-menu">
+            <a href="../templates/home.html"><i class="fa fa-fw fa-home"></i></a>
+            <a href="../templates/liked.html"><i class="fa fa-fw fa-heart"></i></a>
+            <a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a>
+        </div>
+    </div>
+
+            <div style="height: 100px;" class="parent-element">
+                <div class="child-element">
+                    <div class="red"><p style="font-size: 33px;">{{ food_name[0] }}</p></div>
+                </div>
+                <div class="child-element">
+                    <div class="yellow"><img class="card-img-top" src="../static/foodimage/{{ image[0] }}.jpg" alt="no link"></div>
+                </div>
+            </div>
+
+
+            <div class="top-recipe">
+
+        <!--            <div class="col-md-3" style="margin-top:30">-->
+
+                        <div class="top-recipe-contents">
+                            <div class="receipes">
+                                <p><b>Ingredients</b></p>
+                                <p style="margin-top:15px">{{ ingredient[0] }}</p>
+                                <p><b>Instructions</b></p>
+                                <p style="margin-top:15px">{{  instruction[0] }}</p>
+                            </div>
+
+                        </div>
+
+        <!--            </div>-->
+
+                </div>
+            </div>
+
+<!--    <table border = "0" cell-spacing="0" cell-pading = "0">-->
+<!--       <tr>-->
+<!--           <th rowspan="2" colspan="4">{{ food_name[0] }}</th>-->
+<!--           <th rowspan="3" colspan="4"><img class="card-img-top" src="../static/foodimage/{{ image[0] }}.jpg" alt="no link"></th>-->
+<!--       </tr>-->
+<!--        <tr></tr>-->
+<!--        <tr></tr>-->
+<!--        <tr>-->
+<!--            <td colspan="4"><b>Ingredients</b></td>-->
+<!--            <td colspan="4"><b>Instructions</b></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td colspan="4">{{ ingredient[0] }}</td>-->
+<!--            <td colspan="4">{{  instruction[0] }}</td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    {{  food_name[0] }} <br/>-->
+<!--    {{  image[0] }} <br/>-->
+<!--     <br/>-->
+<!--     <br/>-->
+    <footer class="footer">
+        <div class="footer-info">
+            Lakeside,Pokhara,Nepal<br />
+            <a href="mailto:info@xyzhotel.com">info@xyzhotel.com</a><br />
+            +977 1 4481385, +977 1 4456851, +977 1 4568710<br />
+            Copyright © 2022 The XYZ Hotel. All Right Reserved.<br />
+            Website by Team-B
+        </div>
+    </footer>
 </body>
 </html>
+
+<!-- class="recipe-list-boundary"-->
+
+<!--ingredient[0]-->

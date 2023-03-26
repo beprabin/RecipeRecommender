@@ -115,7 +115,7 @@ def recommend():
                         ingredient = recom['Ingredients'].values,
                         instruction = recom['Instructions'].values)
 
-@app.route('/selected-item/<id>')
+@app.route('/selecteditem/<id>')
 def selected_item(id):
     item = pd.DataFrame(columns=['id','title', 'image', 'ingredients', 'instructions'])
     
@@ -126,12 +126,21 @@ def selected_item(id):
     item.at[0, 'Ingredients'] = foodlist['Ingredients'].iloc[int(id)]
     item.at[0, 'Instructions'] = foodlist['Instructions'].iloc[int(id)]
 
+    # item['Ingredients'] = item['Ingredients'].astype('string')
+    # li = list(item['Ingredients'].split(" "))
+
     return render_template('selecteditem.html', 
                         food_name = item['Title'].values,
                         image = item['Image_Name'].values,
-                        ingredient = item['Ingredients'].values,
-                        instruction = item['Instructions'].values)
+                        ingredient = item['Ingredients'].values ,
+
+                        instruction = item['Instructions'].values )
     
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+# list((item['Instruction'].astype(str)).split("."))
