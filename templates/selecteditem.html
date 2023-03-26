@@ -29,7 +29,7 @@
             padding: 10px;
             background-color: #eee;
             width: 100vh;
-            height: 300px;
+<!--            height: 300px;-->
             border-radius: 20px;
         }
       .float-parent-element {
@@ -43,13 +43,33 @@
             margin-top: 50px;
             margin-right: 50%;
             height: 100px;
+            margin-left: 150px;
+            width: 700px;
       }
       .yellow {
-            margin-top:10px;
-            margin-left: 50%;
+<!--            margin-top:10px;-->
+<!--            margin-left: 50%;-->
             height: 100px;
             padding-top: 0;
 
+      }
+
+      .top-recipe{
+<!--        display: grid;-->
+<!--        grid-template-columns: auto auto auto auto auto;-->
+        display: flex;
+        margin: 50px;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 20px;
+<!--        height: 800px;-->
+        background-size: cover;
+        background: url(../frontendimages/toprecipe-bg.jpg);
+      }
+
+      .top-recipe-contents{
+           display: flex;
+           align-items: center;
       }
    </style>
 
@@ -57,17 +77,17 @@
 </head>
 <body>
     <div id="navbar">
-        <img src="mainlogo.png">
+        <img src="../static/frontendimages/mainlogo.png">
         <div class="nav-head">
-            <a href="../templates/home.html">myrecipe</a>
+            <a href="/home">myrecipe</a>
         </div>
 <!--        <div class="nav-login">-->
 <!--            <a href="../templates/login.html"><i class="fa fa-fw fa-user"></i></a>-->
 <!--        </div>-->
         <div class="navbar-menu">
-            <a href="../templates/home.html"><i class="fa fa-fw fa-home"></i></a>
-            <a href="../templates/liked.html"><i class="fa fa-fw fa-heart"></i></a>
-            <a href="../templates/home.html"><i class="fa fa-fw fa-envelope"></i></a>
+            <a href="/home"><i class="fa fa-fw fa-home"></i></a>
+            <a href="/recommend"><i class="fa fa-fw fa-heart"></i></a>
+            <a href="/home"><i class="fa fa-fw fa-envelope"></i></a>
         </div>
     </div>
 
@@ -75,9 +95,9 @@
                 <div class="child-element">
                     <div class="red"><p style="font-size: 33px;">{{ food_name[0] }}</p></div>
                 </div>
-                <div class="child-element">
+                <!--<div class="child-element">
                     <div class="yellow"><img class="card-img-top" src="../static/foodimage/{{ image[0] }}.jpg" alt="no link"></div>
-                </div>
+                </div>-->
             </div>
 
 
@@ -86,13 +106,15 @@
         <!--            <div class="col-md-3" style="margin-top:30">-->
 
                         <div class="top-recipe-contents">
-                            <div class="receipes">
+                            <div class="recipes">
                                 <p><b>Ingredients</b></p>
                                 <p style="margin-top:15px">{{ ingredient[0] }}</p>
                                 <p><b>Instructions</b></p>
                                 <p style="margin-top:15px">{{  instruction[0] }}</p>
                             </div>
-
+                            <div class="child-element">
+                                <div class="yellow"><img class="card-img-top" src="../static/foodimage/{{ image[0] }}.jpg" alt="no link"></div>
+                            </div>
                         </div>
 
         <!--            </div>-->
@@ -122,11 +144,8 @@
 <!--     <br/>-->
     <footer class="footer">
         <div class="footer-info">
-            Lakeside,Pokhara,Nepal<br />
-            <a href="mailto:info@xyzhotel.com">info@xyzhotel.com</a><br />
-            +977 1 4481385, +977 1 4456851, +977 1 4568710<br />
-            Copyright © 2022 The XYZ Hotel. All Right Reserved.<br />
-            Website by Team-B
+            <a href="mailto:info@xyzhotel.com">info@myrecipe.com</a><br />
+            Copyright © 2023 MyRecipe. All Right Reserved.<br />
         </div>
     </footer>
 </body>
