@@ -4,11 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Receipes</title>
 </head>
-    {{  food_name[0] }} <br/>
-    {{  image[0] }} <br/>
-    {{  ingredient[0] }} <br/>
-    {{  instruction[0] }} <br/>
+<body>
+    <table border = "0" cell-spacing="0" cell-pading = "0">
+       <tr>
+           <th rowspan="2" colspan="4">{{ food_name[0] }}</th>
+           <th rowspan="3" colspan="4"><img class="card-img-top" src="../static/foodimage/{{ image[0] }}.jpg" alt="no link"></th>
+       </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <td colspan="4"><b>Ingredients</b></td>
+            <td colspan="4"><b>Instructions</b></td>
+        </tr>
+        <tr>
+            <td colspan="4">{{ ingredient[0] }}</td>
+            <td colspan="4">{{  instruction[0] }}</td>
+        </tr>
+    </table>
+<!--    {{  food_name[0] }} <br/>-->
+<!--    {{  image[0] }} <br/>-->
+<!--     <br/>-->
+<!--     <br/>-->
 </body>
 </html>
+
+
+
+<!--ingredient[0]-->
